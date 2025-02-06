@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 Will You Be Mine? 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+        body {
+            background: linear-gradient(120deg, #ff758c, #ff7eb3);
+            font-family: 'Pacifico', cursive;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-top: 50px;
+        }
+
+        #heart {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+            transform: rotate(-45deg);
+            animation: heartbeat 1.5s infinite;
+        }
+
+        #heart:before, #heart:after {
+            content: "";
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        #heart:before {
+            top: -50px;
+            left: 0;
+        }
+
+        #heart:after {
+            left: 50px;
+            top: 0;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1) rotate(-45deg); }
+            50% { transform: scale(1.2) rotate(-45deg); }
+        }
+
+        #proposal {
+            font-size: 24px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .button {
+            padding: 12px 20px;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+
+        .yes {
+            background: green;
+            color: white;
+            box-shadow: 0 0 10px lime;
+        }
+
+        .no {
+            background: red;
+            color: white;
+            box-shadow: 0 0 10px pink;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+        }
+
+        .falling-petals {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: pink;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <h1>🌹 Happy Rose Day, My Love! 🌹</h1>
+    <div id="heart"></div>
+    <p>Click the button to reveal something special 💕</p>
+    <button class="button" onclick="showProposal()">Click Me 💖</button>
+
+    <div id="proposal">
+        <h2 id="typing-text"></h2>
+        <button class="button yes" onclick="sayYes()">Yes 💘</button>
+        <button class="button no" onclick="sayNo()">No 😢</button>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="mymusic.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        function showProposal() {
+            document.getElementById("proposal").style.display = "block";
+            typeWriter("Will You Be My Valentine? ❤️");
+            document.getElementById("bg-music").play();
+            createPetals();
+        }
+
+        function sayYes() {
+            alert("Yay! Love you ❤️");
+        }
+
+        function sayNo() {
+            let noBtn = document.querySelector('.no');
+            noBtn.style.position = "absolute";
+            noBtn.style.top = Math.random() * window.innerHeight + "px";
+            noBtn.style.left = Math.random() * window.innerWidth + "px";
+        }
+
+        function typeWriter(text) {
+            let i = 0;
+            let speed = 100;
+            function type() {
+                if (i < text.length) {
+                    document.getElementById("typing-text").innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        function createPetals() {
+            for (let i = 0; i < 20; i++) {
+                let petal = document.createElement("div");
+                petal.classList.add("falling-petals");
+                petal.style.left = Math.random() * window.innerWidth + "px";
+                petal.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                document.body.appendChild(petal);
+            }
+        }
+    </script>
+</body>
+<audio id="bg-music" loop>
+
+    <source src="mymusic.mp3" type="audio/mp3">
+
+</audio>
+
+<script>
+
+    document.getElementById("bg-music").play();
+
+</script>
